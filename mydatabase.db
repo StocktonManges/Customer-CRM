@@ -1,0 +1,38 @@
+CREATE TABLE customers (
+    id INTEGER PRIMARY KEY,
+    owner_name TEXT,
+    company TEXT,
+    address TEXT,
+    phone TEXT,
+    email TEXT,
+    instagram_handle TEXT,
+    contact_creator TEXT,
+    notes TEXT
+);
+
+CREATE TABLE orders (
+    id INTEGER PRIMARY KEY,
+    customer_id INTEGER,
+    order_date DATE,
+    order_revenue REAL,
+    last_contact_date DATE,
+    follow_up_date DATE,
+    key_details TEXT,
+    next_steps TEXT,
+    order_status TEXT,
+    order_owner TEXT,
+    FOREIGN KEY (customer_id) REFERENCES customers(id)
+);
+
+CREATE TABLE order_status (
+    id INTEGER PRIMARY KEY,
+    status TEXT
+);
+
+INSERT INTO order_status (status) VALUES
+('new'),
+('contacted'),
+('dm contacted'),
+('appt scheduled'),
+('not interested'),
+('sold');
